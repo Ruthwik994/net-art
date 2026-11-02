@@ -1,0 +1,132 @@
+
+body {
+  margin: 0;
+  padding: 20px 0;
+  background: grey;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 12pt;
+  color: white;
+}
+
+
+.hero {
+  position: relative;
+  width: 92%;
+  margin: 0 auto;
+  min-height: 90vh;
+  overflow: hidden;
+}
+
+
+.glitch-bg {
+  position: absolute;
+  inset: 0;
+  background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpe3EURtbFI0zQzmTUDJVQr84vaZOnvZD8kK6Gi_0VvA&s=10") center / cover no-repeat;
+  animation: jitter 3s infinite steps(1);
+}
+
+
+.glitch-bg::before,
+.glitch-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: inherit;
+}
+
+.glitch-bg::before {
+  filter: hue-rotate(90deg) saturate(2);
+  animation: slice-a 1.7s infinite steps(1);
+}
+
+.glitch-bg::after {
+  filter: hue-rotate(-90deg) saturate(2);
+  animation: slice-b 2.3s infinite steps(1);
+}
+
+@keyframes jitter {
+  0%   { transform: translateX(0); }
+  40%  { transform: translateX(-6px); }
+  42%  { transform: translateX(8px); }
+  44%  { transform: translateX(0); }
+  80%  { transform: translateX(5px); }
+  82%  { transform: translateX(0); }
+}
+
+@keyframes slice-a {
+  0%   { clip-path: inset(0 0 100% 0); transform: translateX(0); }
+  10%  { clip-path: inset(12% 0 84% 0); transform: translateX(-40px); }
+  20%  { clip-path: inset(0 0 100% 0); }
+  35%  { clip-path: inset(55% 0 38% 0); transform: translateX(50px); }
+  45%  { clip-path: inset(0 0 100% 0); }
+  60%  { clip-path: inset(78% 0 15% 0); transform: translateX(-30px); }
+  70%  { clip-path: inset(0 0 100% 0); }
+  85%  { clip-path: inset(30% 0 65% 0); transform: translateX(35px); }
+  92%  { clip-path: inset(0 0 100% 0); }
+}
+
+
+@keyframes slice-b {
+  0%   { clip-path: inset(0 0 100% 0); }
+  15%  { clip-path: inset(65% 0 28% 0); transform: translateX(45px); }
+  25%  { clip-path: inset(0 0 100% 0); }
+  40%  { clip-path: inset(5% 0 90% 0); transform: translateX(-55px); }
+  50%  { clip-path: inset(0 0 100% 0); }
+  65%  { clip-path: inset(40% 0 52% 0); transform: translateX(30px); }
+  75%  { clip-path: inset(0 0 100% 0); }
+  90%  { clip-path: inset(88% 0 5% 0); transform: translateX(-40px); }
+  95%  { clip-path: inset(0 0 100% 0); }
+}
+
+.content {
+  position: relative;
+  padding: 40px;
+  text-align: center;
+  text-shadow: 0 0 6px black;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.content p {
+  max-width: 800px;
+  margin: 0 auto 30px;
+  line-height: 1.5;
+}
+
+.gallery {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.item {
+  flex: 1;
+}
+
+.item img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  display: block;
+}
+
+.item p {
+  margin: 10px 0 0;
+}
+
+.item a {
+  color: white;
+}
+
+/* Stack on small screens */
+@media (max-width: 700px) {
+  .gallery {
+    flex-direction: column;
+  }
+}
